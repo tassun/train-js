@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+<TITLE>Test JSON</TITLE>
+<script language="JavaScript">
+function parseClick() {
+	//var ary = eval('('+mytext.value+')');
+	var ary = null;
+	if(window.JSON && window.JSON.parse) {		
+		alert("JSON parsing ...");
+		ary = window.JSON.parse( mytext.value );
+	} else {
+		alert("evaluate string ...");
+		ary = eval('('+mytext.value+')');
+	}
+	var custs = ary.CUSTOMERS;
+	var txt = "";
+	for(var i=0;i<custs.length;i++) {
+		txt += custs[i].CUSTOMERID + ' - ' +custs[i].NAME+' '+custs[i].SURNAME+'<br>';
+	}
+	resultLayer.innerHTML = txt;
+}
+ </script>
+ </HEAD>
+ <BODY>
+	<input type="button" id="parsebtn" onclick="parseClick()" value="Parse"></input><br>
+	<textarea id="mytext" cols=50 rows=10>
+{ 
+  "CUSTOMERS": [ 
+      { "CUSTOMERID": "100",  "NAME": "John", "SURNAME":"Doe" }, 
+      { "CUSTOMERID": "200",  "NAME": "Jane", "SURNAME":"Air" }, 
+      { "CUSTOMERID": "300", "NAME": "Jack", "SURNAME":"Sparow" }
+   ] 
+}		
+	</textarea><br>
+	<div id="resultLayer"></div>
+ </BODY>
+</HTML>

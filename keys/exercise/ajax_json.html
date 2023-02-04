@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Exercise JavaScript With AJAX And JSON</title>
+<script language="JavaScript">
+function requestClick() {
+	var url = "sample-datas.json";
+	//code begin
+	var req;
+	if(window.XMLHttpRequest) {
+		req = new XMLHttpRequest();
+	} else if(window.ActiveXObject) {
+		req = new ActiveXObject("Msxml.DOMDocument");
+	}	
+	req.open("GET",url);
+	req.onreadystatechange = function() { 
+		parseResponse(req);
+	}
+	req.send();
+	//code end
+}
+function parseResponse(xhr) {
+	if(xhr.readyState!=4) return;
+	if(xhr.status!=200) {
+		alert("Problem get nothing");
+		return;
+	}
+	//code begin
+	renderHTML(xhr.responseText);
+	//code end
+}
+function renderHTML(data) {
+	//code begin
+	mytext.value = data;
+	//code end
+	var buf = "<table border='1' width='100%'>";
+	buf += "<tr><th>#</th><th>Symbol</th><th>Unit</th><th>Price</th><th>Yield</th><th>Amount</th></tr>";
+	//parse & get JSON element value to create html and calculate amount = unit * price
+	//code begin
+	var json = JSON.parse(data);
+	var root = json.root;
+	for(var i =0;i<root.length;i++) {
+		var element = root[i];
+		var amount = parseFloat(element.unit) * parseFloat(element.price);
+		buf += "<tr><td>";
+		buf += element.rowid+"</td><td>";
+		buf += element.symbol+"</td><td align='right'>";
+		buf += element.unit+"</td><td  align='right'>";
+		buf += element.price+"</td><td  align='right'>";
+		buf += element.yield+"</td><td  align='right'>";
+		buf += amount;
+		buf += "</td></tr>";
+	}
+	//code end
+	buf += "</table>";
+	StatusLayer.innerHTML = buf;
+}
+</script>
+</head>
+<body>
+	<table width="100%">
+		<tr><td colspan=2><input type="button" value="REQUEST" onclick="requestClick()"></td></tr>
+		<tr><td colspan=2><textarea id="mytext" cols=80 rows=10></textarea></td></tr>
+		<tr><td colspan=2><div id="StatusLayer"></div></td></tr>
+	</table>
+</body>
+</html>

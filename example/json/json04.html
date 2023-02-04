@@ -1,0 +1,19 @@
+<HTML>
+<HEAD>
+<TITLE>Test JSON</TITLE>
+<script language="JavaScript">
+function parseClick() {
+	var jsonObj = {NAME:"John",SURNAME:"Doe"};
+	var jsonStr = JSON.stringify(jsonObj);
+	StatusLayer.innerHTML = jsonStr;
+	var cust = JSON.parse(jsonStr);
+	LogLayer.innerHTML = cust.NAME+" "+cust.SURNAME;
+}
+ </script>
+ </HEAD>
+ <BODY>
+<input type="button" value="Parse" onclick="parseClick()"><br>
+<div id="StatusLayer"></div>
+<div id="LogLayer"></div>
+ </BODY>
+</HTML>

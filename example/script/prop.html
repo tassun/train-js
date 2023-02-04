@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Object</title>
+<script language="JavaScript">
+function Person(firstname,lastname,address) {
+	this.firstname=firstname;
+	this.lastname=lastname;
+	this.address=address;
+	/*
+	this.getFullName = function() {
+		return this.firstname+" "+this.lastname;
+	}*/
+}
+Person.prototype.getFullName = function() {
+	return this.firstname+" "+this.lastname;
+}
+Person.prototype.HELLO_MESSAGE = "Hello";
+Person.prototype.sayHi = function() {
+	alert(this.HELLO_MESSAGE+" : "+this.firstname);
+}
+function display(person) {
+	alert(person.getFullName());
+	//alert(person.fullName());
+	person.sayHi();
+	for(var p in person) {
+		document.write(p+"="+person[p]+"<br>");
+	}	
+}
+function test() {
+	var tso = new Person("Tassun","Oros","Pakkred");
+	display(tso);
+}
+</script>
+</head>
+<body>
+<button onclick="test()">Test</button>
+</body>
+</html>

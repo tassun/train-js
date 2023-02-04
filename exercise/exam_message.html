@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Exercise Message</title>
+<script>
+function sentMessageToParent() {
+	//code begin
+
+	//code end
+}
+//code begin
+
+//code end
+</script>
+</head>
+<body>
+	<p>This is demonstrate how to communicate between window/frames hosted on different domains.</p>
+	<div id="MyFrameLayer">This is Message Layer in IFRAME</div> <br/>
+	<div id="controllayer">
+		<input type="text" id="inputtext" value="Hello Message"></input><br/>
+		<button id="mybutton" onclick="sentMessageToParent()">Send Message To Parent</button>
+	</div>
+	<p>
+		This exercise objective on communicate between parent page and child frame <br/>
+		java script in child frame can access the parent interface via object window.parent<br/>
+		using postMessage and onmessage <br/>
+		this can be made as a single page working with various html pages with out same origin policy. <br/>
+	</p>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<html>
+<head>
+  <script type="text/javascript">
+    function helloWorld( name )
+    {
+        window.alert( "Hello " + name );
+    }
+
+    function removeHandler(object)
+    {
+        object.onclick = null;
+    }
+  </script>
+</head>
+<body>
+  <button onclick="helloWorld('Joe'); removeHandler(this);">Hello</button>
+</body>
+<html>

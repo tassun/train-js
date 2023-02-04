@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+<TITLE> Test AJAX</TITLE>
+<meta http-equiv="Content-Type" content="text/html ;charset=UTF-8">
+<script language="JavaScript">
+var objRequest = createRequestObject();
+function createRequestObject() {
+	var objTemp = false;
+	if(window.XMLHttpRequest) {
+		objTemp = new XMLHttpRequest();
+	} else if(window.ActiveXObject) {
+		//objTemp = new ActiveXObject("Microsoft.XMLHTTP");
+		objTemp = new ActiveXObject("Msxml.DOMDocument");
+	}
+	return objTemp;
+ }
+ function getData() {
+	if(objRequest) {
+		//objRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		objRequest.open("GET","data.txt");
+		objRequest.onreadystatechange = handleResponse;
+		objRequest.send(null);
+	}
+ }
+function handleResponse() {
+	var objDiv = document.getElementById("targetDiv");
+	if(objRequest.readyState == 4 && objRequest.status == 200) {
+		objDiv.innerHTML = objRequest.responseText;
+	}
+ }
+ </script>
+ </HEAD>
+ <BODY>
+<h3>ทดสอบการดึงข้อมูลจากเซิร์ฟเวอร์โดยใช้เทคนิค AJAX</h3>
+ <input type="button" value="ดึงข้อมูล" onClick="getData();">
+ <br><br>
+ <div id="targetDiv">ข้อมูลจากเซิร์ฟเวอร์จะแสดงที่นี่</div>
+ </BODY>
+</HTML>

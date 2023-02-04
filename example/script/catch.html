@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>Try Catch</title>
+<script language="JavaScript">
+function test() {
+	try {
+		addAlert("Welcome guest!");
+	} catch(ex) {
+		txt="There was an error on this page.\n\n";
+		txt+="Error description: " + ex.description + "\n\n";
+		txt+="Click OK to continue.\n\n";
+		alert(txt);
+	}
+}
+</script>
+</head>
+<body>
+<button onclick="test()">Test</button>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<html>
+<head>
+<script type="text/javascript">
+	function helloWorld() {
+		window.alert( "Hello World" );
+		// Remove the event handler just added
+		helloButton.onclick = null;
+	}
+	window.onload = function() {
+		// Add an event handler
+		helloButton.onclick = helloWorld;
+	}
+</script>
+</head>
+<body>
+  <button id="helloButton">Hello</button>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>If Test</title>
+<script language="JavaScript">
+function isDate(mydate){
+	if (mydate=="" || mydate == null) return true;
+	if ( checkDate(mydate) ) return true;
+	return false;
+}	
+function checkDate(mydate) {
+	var delimiter = "/";
+	var dmy = /\d{1,2}\/\d{1,2}\/\d{2,4}/ ;
+	if ( !mydate.match(dmy) ) { alert("Invalid date's format"); return false;}
+	var intDay = new Date();
+	var ary_date = mydate.split(delimiter);
+	// ------ check year 
+	var y=ary_date[2];  
+	if ( y.length==2 ) {	
+		if (y>=80) { y = intDay.getYear()-100-(intDay.getYear()%100)+eval(y) ;  }
+		else { y = intDay.getYear()-(intDay.getYear()%100)+ eval(y) ;} }
+		else if ( y.length==3 ) { alert("Invalid year"); return false; }
+		intDay.setYear(y);	
+
+	// ------ check month 
+	var m = eval(ary_date[1]) ;
+	if ( (m>0) && (m<=12) ) { intDay.setMonth(m);   intDay.setDate(0); }
+	else {	alert("Invalid month");  return false ;} 
+	// ------ check day
+	var d = eval(ary_date[0]);
+	if ( (d>0) && (d<=intDay.getDate()) ) { return true; } 
+	else { alert("Invalid date"); return false;  }
+}
+</script>
+</head>
+<body>
+	<input id="mydate" value="01/01/2023" />
+	<button onclick="alert(checkDate(mydate.value))">Check Date</button>
+</body>
+</html>

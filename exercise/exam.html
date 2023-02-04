@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>Exercise Java Script</title>
+<script language="JavaScript">
+function setLayerOnPageClick() {
+	//code begin
+	//code end
+}
+function setLayerOnFrameClick() {
+	//code begin
+	//code end
+}
+function setSwitchLayerClick() {
+	//code begin
+	//code end
+}
+function showDialogClick() {
+	//code begin
+	//code end
+}
+function printFrameClick() {
+	//code begin
+	//code end
+}
+function talkToMessageFrameClick() {
+	//code begin
+	//code end
+}
+//call back function for show dialog & iframe handler
+//code begin
+//code end
+</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td colspan="5">Message : <input type="text" id="mytext" value="Hello World"></input></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="Set To Layer" onclick="setLayerOnPageClick()"></td>
+			<td><input type="button" value="Switch Layer" onclick="setSwitchLayerClick()"></td>
+			<td><input type="button" value="Set To Layer In IFrame" onclick="setLayerOnFrameClick()"></td>
+			<td><input type="button" value="Show Dialog" onclick="showDialogClick()"></td>
+			<td><input type="button" value="Print Frame" onclick="printFrameClick()"></td>
+			<td><input type="button" value="Talk To Message Frame" onclick="talkToMessageFrameClick()"></td>
+		</tr>
+		<tr>
+			<td colspan="5">
+				<div id="MyLayer1" >This is Example Layer #1</div>
+				<div id="MyLayer2" style="display:none">This is Example Layer #2</div>
+			</td>
+		</tr>
+	</table>
+	<iframe id="myframe" name="myframe" src="exam_frame.html" width="100%" height="220px"></iframe>
+	<iframe id="msgframe" name="msgframe" src="exam_message.html" width="100%" height="240px"></iframe>
+</body>
+</html>

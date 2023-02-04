@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<TITLE>Test JSON</TITLE>
+<script language="JavaScript">
+var str = '{ "CUSTOMERID": "100", "NAME":"John", "SURNAME":"Doe" }';
+function displayCustomer1(custId,custName,custSurname) {
+	resultLayer.innerHTML = custId+" - "+custName+" "+custSurname;
+}
+function displayCustomer2(cust) {
+	resultLayer.innerHTML = cust.CUSTOMERID+" - "+cust.NAME+" "+cust.SURNAME;
+}
+function call1Click() {
+	var customer = eval('('+str+')');
+	displayCustomer1(customer.CUSTOMERID,customer.NAME,customer.SURNAME);
+}
+function call2Click() {
+	var customer = eval('('+str+')');
+	displayCustomer2(customer);
+}
+function call3Click() {
+	displayCustomer2( { CUSTOMERID:'200', NAME:'Jane', SURNAME:'Air'} );
+}
+ </script>
+ </HEAD>
+ <BODY>
+	<input type="button" id="call1btn" onclick="call1Click()" value="Calling1"></input>
+	<input type="button" id="call2btn" onclick="call2Click()" value="Calling2"></input>
+	<input type="button" id="call3btn" onclick="call3Click()" value="Calling3"></input><br>
+	<div id="resultLayer"></div>
+ </BODY>
+</HTML>

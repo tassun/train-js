@@ -1,0 +1,21 @@
+<HTML>
+<HEAD>
+<TITLE> Test AJAX</TITLE>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script language="JavaScript">
+ async function getData() {
+	/*fetch("data.txt").then( async (response) => {
+		targetDiv.innerHTML = await response.text();
+	});*/
+	let response = await fetch("data.txt");
+	targetDiv.innerHTML = await response.text();
+ }
+ </script>
+ </HEAD>
+ <BODY>
+ <h3>ทดสอบการดึงข้อมูลจากเซิร์ฟเวอร์โดยใช้เทคนิค AJAX</h3>
+ <input type="button" value="ดึงข้อมูล" onClick="getData();">
+ <br><br>
+ <div id="targetDiv">ข้อมูลจากเซิร์ฟเวอร์จะแสดงที่นี่</div>
+ </BODY>
+</HTML>

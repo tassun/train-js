@@ -1,0 +1,20 @@
+<HTML>
+<HEAD>
+<TITLE>Test JSON</TITLE>
+<script language="JavaScript">
+function parseClick() {
+	var ary = eval('('+myinput.value+')');
+	var txt = "";
+	for(var i=0;i<ary.length;i++) {
+		txt += (ary[i]*5) + '<br>';
+	}
+	resultLayer.innerHTML = txt;
+}
+ </script>
+ </HEAD>
+ <BODY>
+	<input type="text" id="myinput" value="[100,200,300,400,500]"></input>
+	<input type="button" id="jsonbtn" onclick="parseClick()" value="Parse"></input>
+	<div id="resultLayer"></div>
+ </BODY>
+</HTML>

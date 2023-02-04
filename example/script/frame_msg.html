@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<title>Post Message</title>
+		<script>
+		function sentToParent() {
+			window.parent.postMessage("Hello Message", "*");	
+		}
+		window.onmessage = function(e) {
+			console.log("on message in frame : "+e.data);
+			mytext.value = e.data;
+		}
+		</script>
+	</head>
+	<body>
+		<input type="text" id="mytext" value="Hello Message"></input><br/>
+		<button id="mybutton" onclick="sentToParent()">Send To Parent</button>
+	</body>
+</html>

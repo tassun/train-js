@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>On Error</title>
+<script type="text/javascript">
+onerror=handleError;
+function handleError(msg,url,l) {
+	var txt="There was an error on this page.\n\n";
+	txt+="Error: " + msg + "\n";
+	txt+="URL: " + url + "\n";
+	txt+="Line: " + l + "\n\n";
+	txt+="Click OK to continue.\n\n";
+	alert(txt);
+	return true;
+}
+function test() { addAlert("Welcome guest!"); }
+</script>
+</head>
+<body>
+<button onclick="test()">Test</button>
+</body>
+</html>

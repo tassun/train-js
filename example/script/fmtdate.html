@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Date/Time</title>
+		<script>
+			function formatDateTime(time,includeDate) {
+				if(!time) return "";
+				var result = "";
+				var now;
+				if(time instanceof Date) now = time;
+				else now = new Date(eval(time));
+				if(includeDate) {
+					var dd = now.getDate();
+					var mm = now.getMonth()+1;
+					var yy = now.getFullYear();
+					result += ((dd < 10) ? "0" : "") + dd;
+					result += ((mm < 10) ? "/0" : "/") + mm;
+					result += "/"+yy;
+					result += " ";
+				}
+				var hh = now.getHours();
+				var mm = now.getMinutes();
+				var ss = now.getSeconds();
+				result += ((hh < 10) ? "0":"") + hh;
+				result += ((mm < 10) ? ":0" : ":") + mm;
+				result += ((ss < 10) ? ":0" : ":") + ss;
+				return result;
+			}
+			function init() {
+				timelabel.innerHTML = formatDateTime(new Date(), true);
+			}
+		</script>
+	</head>
+	<body onload="init()">
+		<label id="timelabel"></label>
+	</body>
+</html>

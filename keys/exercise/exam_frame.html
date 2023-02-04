@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>Exercise Frame</title>
+<style>
+	@media print {
+		#controllayer { display: none; }
+	}
+	.page-breaker { page-break-before: always; }
+</style>
+<script>
+function talkToParent() {
+	//code begin
+	//window.parent.mytext.value = inputtext.value;
+	window.parent.talkToIFrame(inputtext.value);
+	//code end
+}
+</script>
+</head>
+<body>
+	<p>This is demonstrate how to communicate between window/frames on the same origin or domain.</p>
+	<div id="MyFrameLayer">This is Example Layer in IFRAME</div> <br/>
+	<div id="controllayer">
+		<input type="text" id="inputtext" value="Hello Frame"></input><br/>
+		<button id="mybutton" onclick="talkToParent()">Talk To Parent</button>
+	</div>
+	<p class="page-breaker">
+		This exercise objective on communicate between parent page and child frame <br/>
+		java script in child frame can access the parent interface via object window.parent <br/>
+		this can be made as a single page working with various html pages. <br/>
+	</p>
+</body>
+</html>

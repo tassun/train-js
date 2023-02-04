@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Array</title>
+<script language="JavaScript">
+var ary1 = new Array();
+ary1[0] = 'A';
+ary1[2] = 10;
+var ary2 = ['1','2','3'];
+var ary3 = new Array(5);
+var ary4 = new Array("Sun","Mon","Tue","Wed","Thu","Fri","Sat");
+var ary5 = new Array();
+ary5.push("xxx");
+ary5.push("yyy");
+ary5.push("zzz");
+function test() {
+	for(var i=0;i<ary1.length;i++) {
+		console.log(ary1[i]);
+	}
+	console.log("--------------");
+	for(var x in ary4) {
+		console.log(ary4[x]);
+	}
+	console.log("--------------");
+	for(var x in ary5) {
+		console.log(ary5[x]);
+	}
+}
+</script>
+</head>
+<body>
+<button onclick="test()">Test</button>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Array</title>
+<script language="JavaScript">
+var ary1 = [25,3,60,15, 8];
+var ary2 = [100,21,77];
+function test() {
+	document.write(ary1.length);
+	document.write("<br>");
+	document.write(ary1.toString());
+	document.write("<br>");
+	document.write(ary1.join("|"));
+	document.write("<br>");
+	document.write(ary1.sort());
+	document.write("<br>");
+	document.write(ary1.reverse());
+	document.write("<br>");
+	ary1.push(22);
+	document.write(ary1);
+	var a = ary1.pop();
+	document.write("<br>"+a+"<br>");	
+	document.write(ary1);
+	var b = ary1.shift();
+	document.write("<br>"+b+"<br>");	
+	document.write(ary1);
+	document.write("<br>");
+	document.write(ary1.concat(ary2));
+	document.close();
+	window.status = "Hello";
+}
+</script>
+</head>
+<body>
+<button onclick="test()">Test</button>
+</body>
+</html>

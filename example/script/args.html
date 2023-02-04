@@ -1,0 +1,16 @@
+<html>
+<head>
+<title>Arguments</title>
+<script language="JavaScript">
+function play() {
+	for(var i=0;i<arguments.length;i++) {
+		alert(play.arguments[i]);
+	}
+}
+</script>
+</head>
+<body>
+<button onclick="play(1,2,3)">Play 1</button>
+<button onclick="play('hello','world')">Play 2</button>
+</body>
+</html>

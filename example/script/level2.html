@@ -1,0 +1,22 @@
+<html>
+<head>
+  <script type="text/javascript">
+    function helloWorld()
+    {
+        window.alert( "Hello World" );
+    }
+
+    // Add an event handler
+    window.addEventListener( "load", helloWorld, false );  // bubbling phase
+
+    // Add another event handler
+    document.addEventListener( "click", helloWorld, true );  // capture phase
+
+    // Remove the event handler just added
+    document.removeEventListener( "click", helloWorld, true );
+  </script>
+</head>
+<body>
+  <p>Hello World!</p>
+</body>
+</html>

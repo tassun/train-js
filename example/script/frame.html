@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<title>Post Message</title>
+		<script language="JavaScript">
+		function talkToFrameClick() {
+			msgframe.window.postMessage("Hello World", "*");	
+		}
+		window.onmessage = function(e) {
+			console.log("on message in parent : "+e.data);
+		}
+		</script>
+	</head>
+	<body>
+		<button id="mybutton" onclick="talkToFrameClick()">Talk To Frame</button>	
+		<iframe id="msgframe" name="msgframe" src="frame_msg.html" width="100%" height="100px"></iframe>
+	</body>
+</html>

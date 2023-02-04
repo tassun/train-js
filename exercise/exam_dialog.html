@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>Exercise Dialog</title>
+<script>
+window.returnValue = "cancel";
+function okAction() {
+	window.returnValue = "ok";
+	//code begin
+
+	//code end
+	window.close();
+}		
+function cancelAction(){
+	window.returnValue = "cancel";
+	//code begin
+
+	//code end
+	window.close();
+} 		
+function initContents() {
+//try to set message content from arguments
+//code begin
+
+//code end
+}
+</script>
+</head>
+<body onload="initContents()">
+	<center>
+	<table border="0" cellpadding="5px">
+		<tr><td colspan="2"><div id="MyDialogLayer">This is Example Dialog Layer </div> </td></tr>
+		<tr>
+			<td align="right"><button id="okbutton" onclick="okAction()">OK</button></td>
+			<td align="left"><button id="okbutton" onclick="cancelAction()">Cancel</button></td>
+		</tr>
+	</table>
+	</center>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<html>
+<head>
+<title>Exercise Java Script</title>
+<script language="JavaScript">
+function setLayerOnPageClick() {
+	//code begin
+	if(MyLayer1.style.display=="none") {		
+		//MyLayer1 is invisible
+		MyLayer2.innerText = mytext.value;
+		//MyLayer2.innerHTML = mytext.value;
+		//MyLayer2.textContent = mytext.value;
+		//window.document.getElementById("MyLayer1").innerText = window.document.getElementById("mytext").value;
+	} else {
+		//MyLayer2 is invisible
+		MyLayer1.innerText = mytext.value;	
+		//MyLayer1.innerHTML = mytext.value;
+		//MyLayer1.textContent = mytext.value;
+	}
+	//code end
+}
+function setLayerOnFrameClick() {
+	//code begin
+	/*
+	var frm = window.frames[0];
+	var frm_layer= frm.document.getElementById("MyFrameLayer");
+	frm_layer.innerHTML = mytext.value;
+	*/
+	myframe.document.getElementById("MyFrameLayer").innerHTML = mytext.value;
+	//code end
+}
+function setSwitchLayerClick() {
+	//code begin
+	if(MyLayer1.style.display=="none") {	
+		MyLayer1.style.display = "block";
+		MyLayer2.style.display = "none";
+	} else {
+		MyLayer1.style.display = "none";
+		MyLayer2.style.display = "block";
+	}	
+	//code end
+}
+function showDialogClick() {
+	//code begin
+	var winWidth = 350; 
+	var winHeight = 350; 
+	var sw = window.screen.availWidth; 
+	var sh = window.screen.availHeight; 
+	var wx = (sw - winWidth) / 2; 
+	var wy = (sh - winHeight) / 2; 
+	var features = "top="+wy+",left="+wx+",width="+winWidth+",height="+winHeight+",toobar=no,menubar=0,location=no,directories=no,status=no,scrollbars=no,resizable=yes"; 	
+	var awin = window.open("exam_dialog.html","exam_dialog",features);
+	awin.opener = self;
+	//code end
+}
+function printFrameClick() {
+	//code begin
+	//window.print();
+	window.myframe.focus();
+	window.myframe.print();
+	//code end
+}
+//call back function for show dialog & iframe handler
+//code begin
+function doOKAction() {
+	alert("exercise 0 do ok");
+}
+function doCancelAction() {
+	alert("exercise 0 do cancel");
+}
+function talkToIFrame(msg) {
+	mytext.value = msg;
+}
+function talkToMessageFrameClick() {
+	//let win = document.getElementsByTagName('iframe')[1].contentWindow;    
+	//win.postMessage(mytext.value, "*");	
+	msgframe.window.postMessage(mytext.value, "*");	
+}
+window.onmessage = function(e) {
+	console.log("on message in parent : "+e.data);
+	mytext.value = e.data;
+}
+//code end
+</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td colspan="5">Message : <input type="text" id="mytext" value="Hello World"></input></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="Set To Layer" onclick="setLayerOnPageClick()"></td>
+			<td><input type="button" value="Switch Layer" onclick="setSwitchLayerClick()"></td>
+			<td><input type="button" value="Set To Layer In IFrame" onclick="setLayerOnFrameClick()"></td>
+			<td><input type="button" value="Show Dialog" onclick="showDialogClick()"></td>
+			<td><input type="button" value="Print Frame" onclick="printFrameClick()"></td>
+			<td><input type="button" value="Talk To Message Frame" onclick="talkToMessageFrameClick()"></td>
+		</tr>
+		<tr>
+			<td colspan="5">
+				<div id="MyLayer1" >This is Example Layer #1</div>
+				<div id="MyLayer2" style="display:none">This is Example Layer #2</div>
+			</td>
+		</tr>
+	</table>
+	<iframe id="myframe" name="myframe" src="exam_frame.html" width="100%" height="220px"></iframe>
+	<iframe id="msgframe" name="msgframe" src="exam_message.html" width="100%" height="240px"></iframe>
+</body>
+</html>

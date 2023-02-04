@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>eval</title>
+<script language="JavaScript">
+function hello(msg) { logger.innerHTML = logger.innerHTML+'<br>Hello : '+msg; }
+function evalClick() {
+	logger.innerHTML = "Value is : "+eval(myval.value)*10;
+}
+function helloClick() {
+	var fn = eval("hello");
+	fn(myval.value);
+}
+function greetClick() {
+	greet(myval.value);
+}
+eval("function greet(msg) { logger.innerHTML = logger.innerHTML+'<br>Greet : '+msg; }");
+</script>
+</head>
+<body>
+<input type="text" id="myval" value="123"></input>
+<button onclick="evalClick()">Eval</button>
+<button onclick="helloClick()">Hello</button>
+<button onclick="greetClick()">Greet</button>
+<div id="logger"></div>
+</body>
+</html>
