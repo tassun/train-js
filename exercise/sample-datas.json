@@ -1,7 +1,8 @@
 {	
 	"root": [
-			{"id":"1","rowid":"1","symbol":"TMB","unit":"10200","yield":"100.5059","price":"2.50"},
-			{"id":"2","rowid":"2","symbol":"BBL","unit":"22000","yield":"1000.7585","price":"20.50"},
-			{"id":"3","rowid":"3","symbol":"SCB","unit":"35000","yield":"110.9057","price":"50.50"}
+			{"transno":1, "journalname":"Breakfast", "journaltype":"0","amount": 120.0000, "remark":"Noodle + Coffee"},
+			{"transno":2, "journalname":"Lunch", "journaltype":"0","amount": 100.0000, "remark":"Fry Rice"},
+			{"transno":3, "journalname":"Dinner", "journaltype":"0","amount": 250.0000, "remark":"Steak"},
+			{"transno":4, "journalname":"Commission", "journaltype":"1","amount": 1100.0000, "remark": null}
 		]
 }	

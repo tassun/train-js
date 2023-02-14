@@ -33,26 +33,37 @@ function renderHTML(data) {
 	mytext.value = data;
 	//code end
 	var buf = "<table border='1' width='100%'>";
-	buf += "<tr><th>#</th><th>Symbol</th><th>Unit</th><th>Price</th><th>Yield</th><th>Amount</th></tr>";
-	//parse & get JSON element value to create html and calculate amount = unit * price
+	buf += "<tr><th>#</th><th>Transaction</th><th>Amount</th><th>Remark</th></tr>";
+	//parse & get JSON element value to create html and calculate receive/payment
+	//1. payment = sum(amount) if journaltype='0'
+	//2. receive = sum(amount) if journaltype='1'
+	//3. balance = receive - payment
 	//code begin
+	var payamt = 0;
+	var recamt = 0;
 	var json = JSON.parse(data);
 	var root = json.root;
 	for(var i =0;i<root.length;i++) {
 		var element = root[i];
-		var amount = parseFloat(element.unit) * parseFloat(element.price);
-		buf += "<tr><td>";
-		buf += element.rowid+"</td><td>";
-		buf += element.symbol+"</td><td align='right'>";
-		buf += element.unit+"</td><td  align='right'>";
-		buf += element.price+"</td><td  align='right'>";
-		buf += element.yield+"</td><td  align='right'>";
-		buf += amount;
+		if(element.journaltype=='0') {
+			payamt += element.amount;
+		} else {
+			recamt += element.amount;
+		}
+		buf += "<tr><td align='center'>";
+		buf += element.transno+"</td><td>";
+		buf += element.journalname+"</td><td align='right'>";
+		buf += element.amount+"</td><td>";
+		buf += (element.remark?element.remark:"");
 		buf += "</td></tr>";
 	}
+	var balance = recamt - payamt;
+	buf += "<tr><td colspan='2' align='right'>Receive</td><td align='right'>"+recamt+"</td><td></td></tr>";
+	buf += "<tr><td colspan='2' align='right'>Payment</td><td align='right'>"+payamt+"</td><td></td></tr>";
+	buf += "<tr><td colspan='2' align='right'>Balance</td><td align='right'>"+balance+"</td><td></td></tr>";
 	//code end
 	buf += "</table>";
-	StatusLayer.innerHTML = buf;
+	ResultLayer.innerHTML = buf;
 }
 </script>
 </head>
@@ -60,7 +71,7 @@ function renderHTML(data) {
 	<table width="100%">
 		<tr><td colspan=2><input type="button" value="REQUEST" onclick="requestClick()"></td></tr>
 		<tr><td colspan=2><textarea id="mytext" cols=80 rows=10></textarea></td></tr>
-		<tr><td colspan=2><div id="StatusLayer"></div></td></tr>
+		<tr><td colspan=2><div id="ResultLayer">Result Layer</div></td></tr>
 	</table>
 </body>
 </html>
